@@ -27,7 +27,7 @@ public class UserFilter implements Filter{
     //无登录配置列表
     private static final Set<String> ALLOWED_PATHS = 
             Collections.unmodifiableSet(new HashSet<>(
-                    Arrays.asList("/","/index.html","/login","/regist","/logout", "/upload")));
+                    Arrays.asList("/","/index.html","/login","/userLogin.html","/regist","/logout", "/upload")));
 
     @Override
     public void destroy() {
