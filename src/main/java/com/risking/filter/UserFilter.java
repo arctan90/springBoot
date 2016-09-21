@@ -27,7 +27,7 @@ public class UserFilter implements Filter{
     //无登录配置列表
     private static final Set<String> ALLOWED_PATHS = 
             Collections.unmodifiableSet(new HashSet<>(
-                    Arrays.asList("/","/index.html","/login","/userLogin.html","/regist","/logout", "/upload")));
+                    Arrays.asList("/","/index.html","/register","/login")));
 
     @Override
     public void destroy() {
@@ -51,11 +51,14 @@ public class UserFilter implements Filter{
         HttpSession session = req.getSession(false);
 
         
-        boolean allowedPath = ALLOWED_PATHS.contains(path);
+        boolean allowedPath = false;
         if (allowedPath == false 
         		&& (path.equals("/") || path.indexOf("/css/") == 0 
-        		|| path.indexOf("/js/") == 0)) {
+        		|| path.indexOf("/js/") == 0)
+        		|| path.indexOf("/api") == 0) {
         	allowedPath = true;
+        } else {
+            allowedPath = ALLOWED_PATHS.contains(path);
         }
         
         boolean loggedIn = (session != null && session.getAttribute("user") != null);

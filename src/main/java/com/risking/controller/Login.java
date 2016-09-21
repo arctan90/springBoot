@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping(value = "/api")
 public class Login {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Map<String, Object> login(HttpServletRequest request) {

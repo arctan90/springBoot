@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>正在访问</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="page-top"></div>
+    
+<div id="wrapper">
+        <header>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container" id="head-container">
+                    <div class="navbar-header pull-left">
+                        <a class="navbar-brand" href="/">商标占位符</a>
+                    </div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span><span class="icon-bar"></span> <span
+                            class="icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="active dropdown"><a href="#"
+                                class="dropdown-toggle" data-toggle="dropdown"> 防具<strong
+                                    class="caret"></strong>
+                            </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">无甲</a></li>
+                                    <li><a href="#">轻甲</a></li>
+                                    <li><a href="#">中甲</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">全部</a></li>
+                                </ul></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                data-toggle="dropdown"> 武器<strong class="caret"></strong>
+                            </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">法杖</a></li>
+                                    <li><a href="#">⚔</a></li>
+                                    <li><a href="#">锤</a></li>
+                                    <li><a href="#">斧</a></li>
+                                    <li><a href="#">🗡</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">全部</a></li>
+                                </ul></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                data-toggle="dropdown"> 道具<strong class="caret"></strong>
+                            </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">血瓶</a></li>
+                                    <li><a href="#">mana药水</a></li>
+                                    <li><a href="#">回城卷轴</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">种族专属</a></li>
+                                </ul></li>
+                        </ul>
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" />
+                            </div>
+                            <button type="submit" class="btn btn-default">全站搜索</button>
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/login">登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <!-- HEADER -->
+
+<div class="registration">
+    <div class="overlay"></div>
+    <div class="container">
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+                    <form id="register-form" class="form-horizontal registration-form" role="form" method="POST" action="/api/regist">
+                    <h1>来，注册个账号体验吧</h1>
+                        <input type="hidden" name="_token" value="b4AOIHeBbsOM1k6Cb6tWc7BVHXZMAw9x5Vlrhvj7">
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">账号名称<small>(至少6个)</small></label>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" value="" required rangelength="[6,30]">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">电子邮箱地址</label>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-md-4 control-label">密码<small>至少6位</small></label>
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required rangelength="[6,30]">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">确认密码</label>
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required rangelength="[6,30]" equalTo="#password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    注册
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+        </div>
+    </div>
+</div>
+
+<!-- CALL TO ACTION -->
+    <div class="cta-content">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <i class="fa fa-5x fa-flask" aria-hidden="true"></i>
+                    <h3>StreamACon is in Beta!</h3>
+                    <p class="space30">We are building out our app and accepting conferences via invite.</p>
+                    <a href="/contact" class="btn text-center">Contact us for pricing and availability!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CALL TO ACTION -->
+    
+<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="footer-logo"><a href="/">StreamACon</a></h1>
+                    <p>StreamACon is a streaming platform for live and ondemand vieweing of conferences.</p>
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/streamacon"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://facebook.com/streamacon"><i class="fa fa-facebook"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="footer-list">
+                                <li><a href="/events">Upcoming Events</a></li>
+                                <li><a href="/contact">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="footer-list">
+                                <li><a href="/register">Register</a></li>
+                                <li><a href="/login">Forum</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Hackney Enterprises</h4>
+                    <br>
+                    <p>&copy; Copyright 2016 Hackney Enterprises.<br/>All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="/js/jquery-1.9.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/dist/jquery.validate.min.js"></script>
+    <script src="/js/dist/localization/messages_zh.min.js"></script>
+    <script>
+      $.validator.setDefaults({
+        submitHandler: function() {
+          alert("提交事件!");
+        }
+      });
+      $().ready(function() {
+        $("#register-form").validate();
+      });
+    </script>
+</body>
+</html>
