@@ -84,7 +84,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-                    <form id="register-form" class="form-horizontal registration-form" role="form" method="POST" action="/api/regist">
+                    <form id="register-form" class="form-horizontal registration-form" role="form" method="POST" action="">
                     <h1>来，注册个账号体验吧</h1>
                         <input type="hidden" name="_token" value="b4AOIHeBbsOM1k6Cb6tWc7BVHXZMAw9x5Vlrhvj7">
                         <div class="form-group">
@@ -187,7 +187,16 @@
     <script>
       $.validator.setDefaults({
         submitHandler: function() {
-          alert("提交事件!");
+        var name =$("#name").val();
+        var pwd = $("#password-confirm").val();
+        var email = $("#email").val()
+        $.post("/api/regist", {"name":name,"pwd":pwd,"email":email}, 
+                      function(data, status) {
+                   alert(JSON.stringify(data) + "\n状态: " + status);  
+                  if (data.code == 0) {
+                      alert("aaa");
+                  }
+              });
         }
       });
       $().ready(function() {

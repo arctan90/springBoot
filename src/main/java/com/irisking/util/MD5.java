@@ -1,4 +1,4 @@
-package com.risking.util;
+package com.irisking.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

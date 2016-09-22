@@ -1,4 +1,4 @@
-package com.risking.configuration;
+package com.irisking.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

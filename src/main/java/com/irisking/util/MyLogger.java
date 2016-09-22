@@ -1,4 +1,4 @@
-package com.risking.util;
+package com.irisking.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

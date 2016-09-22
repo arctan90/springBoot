@@ -1,4 +1,4 @@
-package com.risking.util;
+package com.irisking.util;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

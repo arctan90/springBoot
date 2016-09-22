@@ -1,4 +1,4 @@
-package com.risking.filter;
+package com.irisking.filter;
 
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 

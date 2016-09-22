@@ -1,4 +1,4 @@
-package com.risking.controller;
+package com.irisking.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.risking.util;
+package com.irisking.util;
 
 import java.io.File;
 import java.io.FileInputStream;

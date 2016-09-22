@@ -1,4 +1,4 @@
-package com.risking.configuration;
+package com.irisking.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

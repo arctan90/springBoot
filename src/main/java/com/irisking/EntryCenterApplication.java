@@ -1,4 +1,4 @@
-package com.risking;
+package com.irisking;
 /**
  * 用户服务
  */

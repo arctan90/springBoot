@@ -1,4 +1,4 @@
-package com.risking.controller;
+package com.irisking.controller;
 
 
 import java.util.HashMap;
@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,8 +31,9 @@ public class Login {
 		return session.getId();
 	}
 	
-	@RequestMapping("/regist")
-	public String regist(HttpServletRequest request) {
+	@RequestMapping(value="/regist", method = RequestMethod.POST)
+	public String regist(@PathVariable String input, HttpServletRequest request) {
+	    
 		return request.getRequestedSessionId();
 	}
 }

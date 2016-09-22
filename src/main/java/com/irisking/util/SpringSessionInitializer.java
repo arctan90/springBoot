@@ -1,7 +1,9 @@
-package com.risking.util;
+package com.irisking.util;
 
 import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
-import com.risking.configuration.RedisHttpSessionConfig;
+
+import com.irisking.configuration.RedisHttpSessionConfig;
+
 
 public class SpringSessionInitializer extends AbstractHttpSessionApplicationInitializer{
     public SpringSessionInitializer() {
