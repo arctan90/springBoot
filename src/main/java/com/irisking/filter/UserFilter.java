@@ -55,7 +55,8 @@ public class UserFilter implements Filter{
         if (allowedPath == false 
         		&& (path.equals("/") || path.indexOf("/css/") == 0 
         		|| path.indexOf("/js/") == 0)
-        		|| path.indexOf("/api") == 0) {
+        		|| path.indexOf("/api/") == 0
+        		|| path.indexOf("/pages/") == 0) {
         	allowedPath = true;
         } else {
             allowedPath = ALLOWED_PATHS.contains(path);

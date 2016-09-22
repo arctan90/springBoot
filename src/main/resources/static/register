@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<div class="container">
+<div id="form-container" class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
                     <form id="register-form" class="form-horizontal registration-form" role="form" method="POST" action="">
@@ -185,20 +185,37 @@
     <script src="/js/dist/jquery.validate.min.js"></script>
     <script src="/js/dist/localization/messages_zh.min.js"></script>
     <script>
+     var okpage;
+      $(document).ready(function() {
+          bodyContent = $.ajax({
+          url: "/pages/registok",
+          type: "GET",
+          global:false,
+          dataType: "html",
+          success:function(msg) {
+            okpage = msg;
+          }
+      })
+     });
+    
       $.validator.setDefaults({
         submitHandler: function() {
-        var name =$("#name").val();
-        var pwd = $("#password-confirm").val();
-        var email = $("#email").val()
-        $.post("/api/regist", {"name":name,"pwd":pwd,"email":email}, 
-                      function(data, status) {
-                   alert(JSON.stringify(data) + "\n状态: " + status);  
-                  if (data.code == 0) {
-                      alert("aaa");
-                  }
-              });
+          var name =$("#name").val();
+          var pwd = $("#password-confirm").val();
+          var email = $("#email").val();
+          $.ajax({
+              type:"post",
+              url:"/api/regist",
+              contentType:"application/json;charset=UTF-8",
+              dataType:"json",
+              data:JSON.stringify({"name":name,"pwd":pwd,"email":email}),
+              success:function(data){
+                $("#form-container").html(okpage);
+              }
+          });
         }
       });
+
       $().ready(function() {
         $("#register-form").validate();
       });

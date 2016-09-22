@@ -1,4 +1,4 @@
-package com.risking;
+package com.irisking;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
