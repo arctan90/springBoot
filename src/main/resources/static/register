@@ -85,33 +85,33 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
                     <form id="register-form" class="form-horizontal registration-form" role="form" method="POST" action="">
-                    <h1>来，注册个账号体验吧</h1>
+                    <h1 id="regist-title">注册体验</h1>
                         <input type="hidden" name="_token" value="b4AOIHeBbsOM1k6Cb6tWc7BVHXZMAw9x5Vlrhvj7">
-                        <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">账号名称<small>(至少6个)</small></label>
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="" required rangelength="[6,30]">
-                            </div>
-                        </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">电子邮箱地址</label>
+                            <label for="email" class="col-md-4 control-label">电子邮箱</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="" required>
+                                <input id="email" type="email" class="form-control" name="email" value="" required
+                                placeholder="邮箱地址">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="password" class="col-md-4 control-label">密码<small>至少6位</small></label>
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required rangelength="[6,30]">
+                                <input id="password" type="password" class="form-control"
+                                 name="password" required rangelength="[6,30]"
+                                 placeholder="6到30位">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">确认密码</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required rangelength="[6,30]" equalTo="#password">
+                                <input id="password-confirm" type="password" 
+                                class="form-control" name="password_confirmation" 
+                                required rangelength="[6,30]" equalTo="#password"
+                                placeholder="密码确认">
                             </div>
                         </div>
 
@@ -179,7 +179,7 @@
         </div>
     </footer>
 </div>
-<script src="/js/jquery-1.9.1.js"></script>
+    <script src="/js/jquery-1.9.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="/js/dist/jquery.validate.min.js"></script>
@@ -200,7 +200,6 @@
     
       $.validator.setDefaults({
         submitHandler: function() {
-          var name =$("#name").val();
           var pwd = $("#password-confirm").val();
           var email = $("#email").val();
           $.ajax({
@@ -208,9 +207,14 @@
               url:"/api/regist",
               contentType:"application/json;charset=UTF-8",
               dataType:"json",
-              data:JSON.stringify({"name":name,"pwd":pwd,"email":email}),
+              data:JSON.stringify({"pwd":pwd,"email":email}),
               success:function(data){
-                $("#form-container").html(okpage);
+                if (data.code==0) {
+                  $("#form-container").html(okpage);
+                } else {
+                  $("#regist-title").attr("class", "alert alert-danger");
+                  $("#regist-title").html(data.msg);
+                }
               }
           });
         }
