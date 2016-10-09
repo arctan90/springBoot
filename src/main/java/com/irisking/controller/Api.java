@@ -19,6 +19,7 @@ import com.irisking.dao.UserDao;
 import com.irisking.orm.UserOrm;
 import com.irisking.requestbody.LoginRequest;
 import com.irisking.requestbody.RegistRequest;
+import com.irisking.util.Token;
 
 
 @RestController
@@ -30,12 +31,17 @@ public class Api {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> login(@RequestBody LoginRequest login, HttpServletRequest request) {
 	    Map<String, Object> resultMap = new HashMap<>();
-	    int nameHash = login.getName().hashCode(); //用hash分表
-	    
 	    String mString = "ok";
 	    int code = 0;
 	    String name = login.getName();
 	    String pwd = login.getPwd();
+	    
+	    int nameHash = login.getName().hashCode(); //用hash分表
+	    
+	    //生成token：name+sessionId
+	    HttpSession session = request.getSession();
+    	String token = Token.getToken(session.getId(), name);
+	    
 	    //后端数据校验
 	    if (name == null || pwd == null) {
 	    	code = 2;
@@ -56,10 +62,20 @@ public class Api {
 			    } else if (!userOrm.getPwd().equals(pwd)){
 			    	code = 4;
 			    	mString = "密码错误";
-			    } else {
-			    	HttpSession session = request.getSession();
-			    	session.getId();
-			    	resultMap.put("sid", session.getId());
+			    } else { //成功登录
+			    	
+			    	userOrm.setToken(token);
+			    	userOrm.setTimeStamp(System.currentTimeMillis()/1000);
+			    	try {
+			    		dao.save(userOrm);
+			    	} catch (Exception e) {
+						// TODO: handle exception
+			    		e.printStackTrace();
+					}
+			    	resultMap.put("token", token);
+			    	
+			    	//token写入redis
+			    	session.setAttribute("token", token);
 			    }
 	    	}
 	    }
@@ -75,6 +91,12 @@ public class Api {
 		return session.getId();
 	}
 	
+	/**
+	 * 
+	 * @param input
+	 * @param request
+	 * @return Response code 0正常；1用户已存在; 2参数错误；3数据库异常
+	 */
 	@RequestMapping(value="/regist", method = RequestMethod.POST)
 	public @ResponseBody Response<Object> regist(@RequestBody RegistRequest input, HttpServletRequest request) {
 	    Response<Object> response = new Response<>();
@@ -95,20 +117,20 @@ public class Api {
 		    	response.setMsg("参数错误");
 		    	return response;
 	    	}
-	    	//sql注入攻击
-//	    	if (email.indexOf(";")>=0 || email.indexOf("--")>=0
-//	    			|| pwd.indexOf(";")>=0 || pwd.indexOf("--")>=0){
-//	    		return response;
-//	    	}
 	    }
 	    
 	    UserOrm userOrm = new UserOrm();
 	    userOrm.setName(email);
 	    userOrm.setPwd(pwd);
-	    UserOrm dbResult = null;
+	    
+		UserOrm dbResult = null;
 
 	    try {
 	    	dbResult = dao.save(userOrm);
+	    	if (dbResult == null) {
+	    		response.setMsg("数据库异常");
+	    		response.setCode(3);
+	    	}
 	    }catch (Exception e) {
 			// TODO: handle exception
 	    	String errorMsg = showDBInfo(e);

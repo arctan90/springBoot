@@ -9,6 +9,8 @@ import javax.persistence.Index;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.ColumnDefault;
+
 
 @Entity
 @Table(name="user",
@@ -28,6 +30,14 @@ public class UserOrm {
     @NotNull
     public String pwd;
 
+    /**/
+    @Column(name="token", columnDefinition="varchar(128) default''")
+    public String token;
+    
+    /*最后登录的时间戳*/
+    @Column(name="timeStamp", columnDefinition="int(64) default 0")
+    public Long timeStamp;
+    
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +60,22 @@ public class UserOrm {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Long getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Long timeStamp) {
+		this.timeStamp = timeStamp;
 	}
     
 }

@@ -8,4 +8,13 @@ public class MyLogger {
     public static void log(String msg) {
         log.info(msg);
     }
+    
+    public static void logException(Exception e) {
+    	StringBuffer stringBuffer = new StringBuffer();
+    	StackTraceElement[] traceElements = e.getStackTrace();
+    	for (StackTraceElement traceElement : traceElements) {
+    		stringBuffer.append(traceElement.toString()).append("||");
+    	}
+    	log.warn(stringBuffer.toString());
+    }
 }

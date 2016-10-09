@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.irisking.orm.UserOrm;
 
+
 public interface UserDao extends CrudRepository<UserOrm, Long>{
 	public UserOrm findById(Long id);
 	
