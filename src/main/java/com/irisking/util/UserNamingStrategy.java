@@ -3,7 +3,7 @@ package com.irisking.util;
 import org.hibernate.cfg.DefaultNamingStrategy;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class UserNamingStrategy extends DefaultNamingStrategy {
 	/**
 	 * 
